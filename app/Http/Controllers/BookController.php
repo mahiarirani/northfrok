@@ -36,7 +36,7 @@ class BookController extends Controller
         ]);
 
         if ($validator->fails())
-            return response()->json(['success' => false, 'errors' => $validator->errors()]);
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 400);
         $book = Book::create($validator->validated());
         return response()->json(['success' => true, 'data' => new BookResource($book)]);
     }
@@ -51,7 +51,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         if (!$book)
-            return response()->json(['success' => false, 'message' => 'Book does not exist']);
+            return response()->json(['success' => false, 'message' => 'Book does not exist'], 404);
         return response()->json(['success' => true, 'data' => new BookResource($book)]);
     }
 
@@ -66,7 +66,7 @@ class BookController extends Controller
     {
         $book = Book::find($id);
         if (!$book)
-            return response(['success' => false, 'message' => 'Book does not exist']);
+            return response(['success' => false, 'message' => 'Book does not exist'], 404);
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|max:50|unique:books',
@@ -76,7 +76,7 @@ class BookController extends Controller
         ]);
 
         if ($validator->fails())
-            return response()->json(['success' => false, 'message' => $validator->errors()]);
+            return response()->json(['success' => false, 'message' => $validator->errors()], 400);
         $book->update($validator->validated());
         return response()->json(['success' => true, 'data' => new BookResource($book)]);
     }
@@ -92,6 +92,6 @@ class BookController extends Controller
         $book = Book::find($id);
         if ($book)
             return response(['success' => $book->delete()]);
-        return response(['success' => false, 'message' => 'Book does not exist']);
+        return response(['success' => false, 'message' => 'Book does not exist'], 404);
     }
 }
