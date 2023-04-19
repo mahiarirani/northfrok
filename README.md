@@ -40,7 +40,14 @@ To run the API, you need to have the following software installed:
 
 
 
-`DB_CONNECTION=mysql DB_HOST=127.0.0.1 DB_PORT=3306 DB_DATABASE=northfrok DB_USERNAME=root DB_PASSWORD=`
+```
+DB_CONNECTION=mysql 
+DB_HOST=127.0.0.1 
+DB_PORT=3306 
+DB_DATABASE=northfrok 
+DB_USERNAME=root 
+DB_PASSWORD=  
+```  
 
 6.  Create the database:
 
