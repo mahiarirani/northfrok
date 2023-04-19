@@ -14,31 +14,26 @@ To run the API, you need to have the following software installed:
 
 1.  Clone this repository to your local machine:
 
-
-
 `git clone https://github.com/mahiarirani/northfrok.git`
 
-2.  Install the dependencies using Composer:
+
+2. Create a copy of the environment file:
+
+```
+cd northfrok
+cp .env.example .env
+```
 
 
-
-`cd northfrok composer install`
-
-3.  Create a copy of the environment file:
+3. Install the dependencies using Composer:
 
 
-
-`cp .env.example .env`
-
-4.  Generate a new application key:
-
+``` 
+composer install
+```
 
 
-`php artisan key:generate`
-
-5.  Edit the `.env` file with your database configuration:
-
-
+4. Edit the `.env` file with your database configuration:
 
 ```
 DB_CONNECTION=mysql 
@@ -49,13 +44,12 @@ DB_USERNAME=root
 DB_PASSWORD=  
 ```  
 
-6.  Create the database:
-
-
+5. Create the database:
 
 `php artisan migrate:install`
 
-7.  Optionally, you can populate the database with fake data for testing purposes:
+
+6. Optionally, you can populate the database with fake data for testing purposes:
 
 
 
